@@ -76,8 +76,8 @@ diagnosticMode:
 ## @param image.debug Specify if debug logs should be enabled
 ##
 image:
-  registry: docker.io
-  repository: bitnami/keycloak
+  registry: default-route-openshift-image-registry.apps-crc.testing
+  repository: keycloak/keycloak
   tag: 21.0.2-debian-11-r0
   digest: ""
   ## Specify a imagePullPolicy
@@ -266,7 +266,7 @@ extraContainerPorts: []
 ##
 podSecurityContext:
   enabled: true
-  fsGroup: 1001
+  fsGroup: 1000680000
 ## Keycloak containers' Security Context
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
 ## @param containerSecurityContext.enabled Enabled Keycloak containers' Security Context
@@ -275,7 +275,7 @@ podSecurityContext:
 ##
 containerSecurityContext:
   enabled: true
-  runAsUser: 1001
+  runAsUser: 1000680000
   runAsNonRoot: true
 ## Keycloak resource requests and limits
 ## ref: https://kubernetes.io/docs/user-guide/compute-resources/
@@ -887,7 +887,7 @@ keycloakConfigCli:
   ##
   containerSecurityContext:
     enabled: true
-    runAsUser: 1001
+    runAsUser: 1000680000
     runAsNonRoot: true
   ## keycloak-config-cli pods' Security Context
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod
